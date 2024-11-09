@@ -2,6 +2,7 @@
 import { sendContactForm } from "@/lib/api";
 import React, { useState } from "react";
 import { z } from "zod";
+import Swal from "sweetalert2";
 
 // Define Zod schema for validation
 const contactSchema = z.object({
@@ -38,7 +39,7 @@ export const ContactUs: React.FC = () => {
     const { name, value, type, checked } = e.target;
     setFormData((prevData) => ({
       ...prevData,
-      [name]: type === "checkbox" ? checked : value, // This line sets the value
+      [name]: type === "checkbox" ? checked : value,
     }));
   };
 
@@ -51,18 +52,43 @@ export const ContactUs: React.FC = () => {
 
     if (validation.success) {
       console.log("Form Data:", formData); // If valid, log the form data
+      setErrors({}); // Clear any previous errors
 
       try {
         await sendContactForm(formData);
+        
+        // Show success alert
+        Swal.fire({
+          icon: "success",
+          title: "Success!",
+          text: "Your message has been sent.",
+        });
+
+        // Clear the form after success
+        setFormData({
+          name: "",
+          email: "",
+          company: "",
+          telephone: "",
+          message: "",
+          agree: false,
+        });
+
       } catch (error) {
         console.log(error);
+
+        // Show error alert
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong! Please try again.",
+        });
       }
-      setErrors({}); // Clear any previous errors
     } else {
       // Map errors for easy display
       const fieldErrors = validation.error.flatten().fieldErrors;
       setErrors(fieldErrors as Partial<ContactFormData>);
-      console.log("Validation Errors:", fieldErrors); // Log errors to console
+      console.log("Validation Errors:", fieldErrors);
     }
   };
 
@@ -75,10 +101,7 @@ export const ContactUs: React.FC = () => {
           We aim to exceed customer expectation and are dedicated to providing a
           high-quality service. Please feel free to contact us so we can discuss
           looking after either a single aircraft or a fleet.
-          <span className="font-semibold">
-            {" "}
-            Try us, you will be happy with the result.
-          </span>
+          <span className="font-semibold"> Try us, you will be happy with the result.</span>
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-6">

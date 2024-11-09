@@ -11,10 +11,9 @@ const Header = () => {
 
   // Close the menu when clicking outside of it
   useEffect(() => {
-    const handleOutsideClick = (event: any) => {
-      // Close menu if clicked outside
-      console.log(event);
-      if (!event.target.closest("#mobileMenu") && menuOpen) {
+    const handleOutsideClick = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
+      if (!target.closest("#mobileMenu") && menuOpen) {
         setMenuOpen(false);
       }
     };
@@ -25,12 +24,13 @@ const Header = () => {
   }, [menuOpen]);
 
   return (
-    <header className=" md:items-center md:justify-around md:flex  border-b border-gray-300">
-      <div className="flex md:items-center lg:justify-center">
-        {/* Logo */}
+    <header className="flex items-center justify-between px-4 py-4 md:justify-around md:px-6 lg:px-10 border-b border-gray-300 bg-white">
+      {/* Logo */}
+      <div className="flex items-center">
         <img
           src="https://aerotech-uk.co.uk/wp-content/uploads/2022/11/AeroTechLogoDefault-1.png"
           alt="AeroTech Logo"
+          className="w-32 h-auto"
         />
       </div>
 
@@ -76,24 +76,18 @@ const Header = () => {
       {menuOpen && (
         <div
           id="mobileMenu"
-          className="md:hidden absolute top-16 left-0 right-0 bg-white shadow-lg border-t border-gray-300 p-4 space-y-2"
+          className="md:hidden absolute top-16 left-0 right-0 bg-white shadow-lg border-t border-gray-300 p-4 space-y-4 z-50"
         >
           <Link
             href="/"
-            className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
-          >
-            Go to...
-          </Link>
-          <Link
-            href="/"
-            className="text-lg font-semibold text-gray-800 hover:text-red-600 relative group"
+            className="block text-lg font-semibold text-gray-800 hover:text-red-600 relative group"
           >
             HOME
             <span className="absolute left-0 bottom-0 w-full h-0.5 bg-red-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
           </Link>
           <Link
             href="/contact"
-            className="text-lg font-semibold text-gray-800 hover:text-red-600 relative group"
+            className="block text-lg font-semibold text-gray-800 hover:text-red-600 relative group"
           >
             CONTACT
             <span className="absolute left-0 bottom-0 w-full h-0.5 bg-red-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>

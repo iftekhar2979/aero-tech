@@ -11,9 +11,9 @@ const Header = () => {
 
   // Close the menu when clicking outside of it
   useEffect(() => {
-    const handleOutsideClick = (event:any) => {
+    const handleOutsideClick = (event: any) => {
       // Close menu if clicked outside
-      console.log(event)
+      console.log(event);
       if (!event.target.closest("#mobileMenu") && menuOpen) {
         setMenuOpen(false);
       }
@@ -30,17 +30,25 @@ const Header = () => {
         {/* Logo */}
         <img
           src="https://aerotech-uk.co.uk/wp-content/uploads/2022/11/AeroTechLogoDefault-1.png"
-          alt="AeroTech Logo"  
+          alt="AeroTech Logo"
         />
       </div>
 
       {/* Desktop Navigation Links */}
       <nav className="hidden md:flex space-x-8">
-        <Link href="/" className="text-lg font-semibold text-gray-800 hover:text-red-600 relative">
+        <Link
+          href="/"
+          className="text-lg font-semibold text-gray-800 hover:text-red-600 relative group"
+        >
           HOME
+          <span className="absolute left-0 bottom-0 w-full h-0.5 bg-red-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
         </Link>
-        <Link href="/contact" className="text-lg font-semibold text-gray-800 hover:text-red-600">
+        <Link
+          href="/contact"
+          className="text-lg font-semibold text-gray-800 hover:text-red-600 relative group"
+        >
           CONTACT
+          <span className="absolute left-0 bottom-0 w-full h-0.5 bg-red-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
         </Link>
       </nav>
 
@@ -54,7 +62,12 @@ const Header = () => {
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
           </svg>
         </button>
       </div>
@@ -65,14 +78,25 @@ const Header = () => {
           id="mobileMenu"
           className="md:hidden absolute top-16 left-0 right-0 bg-white shadow-lg border-t border-gray-300 p-4 space-y-2"
         >
-          <Link href="/" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
+          <Link
+            href="/"
+            className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
+          >
             Go to...
           </Link>
-          <Link href="/" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
-            Home
+          <Link
+            href="/"
+            className="text-lg font-semibold text-gray-800 hover:text-red-600 relative group"
+          >
+            HOME
+            <span className="absolute left-0 bottom-0 w-full h-0.5 bg-red-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
           </Link>
-          <Link href="/contact" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
-            Contact
+          <Link
+            href="/contact"
+            className="text-lg font-semibold text-gray-800 hover:text-red-600 relative group"
+          >
+            CONTACT
+            <span className="absolute left-0 bottom-0 w-full h-0.5 bg-red-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
           </Link>
           {/* Search Input */}
           <div className="mt-2">

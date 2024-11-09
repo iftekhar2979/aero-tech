@@ -1,6 +1,7 @@
 // components/Footer.js
 import React from 'react';
 import { FaFacebook, FaTimes } from 'react-icons/fa';
+import { FaTwitter, FaXTwitter } from 'react-icons/fa6';
 
 const Footer = () => {
   return (
@@ -25,12 +26,26 @@ const Footer = () => {
         <div>
           <h2 className="text-lg font-semibold mb-4">GET SOCIAL</h2>
           <div className="flex space-x-4">
-            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
-              <FaFacebook className="text-white text-2xl" />
-            </a>
-            <a href="#" target="_blank" rel="noopener noreferrer">
-              <FaTimes className="text-white text-2xl" />
-            </a>
+
+        <a
+            href="https://www.facebook.com/aerotechaircraftmaintenanceltd/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-700 hover:text-blue-600 transition-colors cursor-pointer "
+          >
+            <FaFacebook className="text-2xl" />
+          </a>
+
+          {/* Twitter Link */}
+          <a
+            href="https://twitter.com/aerotech_ltd"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-black hover:text-black transition-colors cursor-pointer "
+          >
+            <FaXTwitter className="text-2xl " />
+          </a>
+       
           </div>
         </div>
       </div>

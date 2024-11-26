@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+ 
+.bgImage{
+  /* https://aerotech-uk.co.uk/wp-content/uploads/2022/11/AerotechBanner.jpg */
+
+  background-image:radial-gradient(circle at left center, rgba(0,0,0,0.47) 12%,rgba(255,255,255,0) 59%) ,url(https://aerotech-uk.co.uk/wp-content/uploads/2022/11/AerotechBanner.jpg);
+  background-repeat:no-repeat;
+  flex-wrap:wrap; 
+
+}
+
+.bg-contact{
+  
+  background-image:radial-gradient(circle at left center, rgba(0,0,0,0.47) 12%,rgba(255,255,255,0) 59%) ,url(../public/Aerotech-pan-31.jpg);
+  background-repeat:no-repeat;
+  flex-wrap:wrap;
+}
+/* bg-contact-image */
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.separator{
+  align-self: flex-start;
+  margin-right:auto;
+  margin-bottom:10px;
+  width:100%;
+  max-width:20%;
+}
+.about-us-image{
+  background-image: url("../public/Aerotech-pan-31.jpg");
+   background-repeat: no-repeat;
+   flex-wrap: wrap;
+    visibility: visible;
+}
